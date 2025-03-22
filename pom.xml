@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>ms.kenchen</groupId>
@@ -12,17 +13,18 @@
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <build>
     <plugins>
-      <!-- Java 编译插件 -->
+      <!-- 编译插件 -->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
+        <version>3.10.1</version>
         <configuration>
-          <source>11</source>
-          <target>11</target>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
         </configuration>
       </plugin>
 
@@ -30,24 +32,20 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>2.1.1</version>
+        <version>3.3.2</version>
       </plugin>
 
-      <!-- Jetty 插件（本地测试可选） -->
+      <!-- Jetty 插件（可选，用于本地测试） -->
       <plugin>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
-        <version>9.2.9.v20150224</version>
+        <version>11.0.15</version>
         <configuration>
           <webApp>
             <contextPath>/</contextPath>
           </webApp>
-          <webAppSourceDirectory>target/${project.artifactId}-${project.version}</webAppSourceDirectory>
-          <stopPort>8079</stopPort>
-          <stopKey>stopit</stopKey>
-          <stopWait>10</stopWait>
           <httpConnector>
-            <!--<port>8080</port>-->
+            <port>8080</port>
             <idleTimeout>60000</idleTimeout>
           </httpConnector>
         </configuration>
@@ -76,34 +74,34 @@
   </build>
 
   <dependencies>
-    <!-- Jersey Servlet 支持 -->
-    <dependency>
-      <groupId>org.glassfish.jersey.containers</groupId>
-      <artifactId>jersey-container-servlet</artifactId>
-      <version>2.22.2</version>
-    </dependency>
-
-    <!-- Jersey JSON 支持 -->
-    <dependency>
-      <groupId>org.glassfish.jersey.media</groupId>
-      <artifactId>jersey-media-json-jackson</artifactId>
-      <version>2.22.2</version>
-    </dependency>
-
-    <!-- Jersey 核心服务器 -->
+    <!-- Jersey 核心 -->
     <dependency>
       <groupId>org.glassfish.jersey.core</groupId>
       <artifactId>jersey-server</artifactId>
-      <version>2.22.2</version>
-    </dependency>
-           
-    <dependency>
-       <groupId>jakarta.ws.rs</groupId>
-       <artifactId>jakarta.ws.rs-api</artifactId>
-       <version>2.1.6</version>
-       <scope>provided</scope>
+      <version>3.0.2</version>
     </dependency>
 
+    <!-- Servlet 支持 -->
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet</artifactId>
+      <version>3.0.2</version>
+    </dependency>
+
+    <!-- JSON 支持 -->
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-jackson</artifactId>
+      <version>3.0.2</version>
+    </dependency>
+
+    <!-- Jakarta JAX-RS API -->
+    <dependency>
+      <groupId>jakarta.ws.rs</groupId>
+      <artifactId>jakarta.ws.rs-api</artifactId>
+      <version>3.0.0</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
 </project>
