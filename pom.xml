@@ -63,20 +63,26 @@
     </plugins>
   </build>
   <dependencies>
+  <!-- Jersey Servlet 支持 -->
     <dependency>
       <groupId>org.glassfish.jersey.containers</groupId>
-      <artifactId>jersey-container-servlet-core</artifactId>
+      <artifactId>jersey-container-servlet</artifactId>
       <version>2.22.2</version>
     </dependency>
+
+  <!-- Jersey JSON 支持 -->
     <dependency>
       <groupId>org.glassfish.jersey.media</groupId>
       <artifactId>jersey-media-json-jackson</artifactId>
       <version>2.22.2</version>
     </dependency>
+
+  <!-- Jersey 核心服务器 -->
     <dependency>
       <groupId>org.glassfish.jersey.core</groupId>
       <artifactId>jersey-server</artifactId>
       <version>2.22.2</version>
     </dependency>
-  </dependencies>
+</dependencies>
+
 </project>
